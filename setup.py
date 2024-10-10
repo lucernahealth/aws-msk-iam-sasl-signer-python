@@ -15,7 +15,8 @@ with open("README.rst") as readme_file:
 with open("CHANGELOG.rst") as changelog_file:
     history = changelog_file.read()
 
-requirements = ["boto3<=1.18.65", "botocore<1.20.107"]
+# Do not touch without good reason! These versions are pinned to be compatible with Glue 3.0
+requirements = ["boto3==1.18.65", "botocore==1.21.65"]
 
 test_requirements = [
     "pytest==7.3.1",
