@@ -15,7 +15,9 @@ with open("README.rst") as readme_file:
 with open("CHANGELOG.rst") as changelog_file:
     history = changelog_file.read()
 
-requirements = ["Click>=7.0", "boto3>=1.26.125", "botocore>=1.29.125"]
+# Do not touch without good reason! These versions are pinned to be
+# compatible with Glue 3.0
+requirements = ["boto3==1.18.65", "botocore==1.21.65"]
 
 test_requirements = [
     "pytest==7.3.1",
@@ -26,23 +28,15 @@ test_requirements = [
 
 setup(
     author="Amazon Managed Streaming for Apache Kafka",
-    python_requires=">=3.8",
+    python_requires=">=3.7",
     classifiers=[
         "Development Status :: 5 - Production/Stable",
         "Intended Audience :: Developers",
         "License :: OSI Approved :: Apache Software License",
         "Natural Language :: English",
-        "Programming Language :: Python :: 3.8",
-        "Programming Language :: Python :: 3.9",
-        "Programming Language :: Python :: 3.10",
-        "Programming Language :: Python :: 3.11",
+        "Programming Language :: Python :: 3.7",
     ],
     description="Amazon MSK Library in Python for SASL/OAUTHBEARER Auth",
-    entry_points={
-        "console_scripts": [
-            "aws_msk_get_auth_token=aws_msk_iam_sasl_signer.cli:execute",
-        ],
-    },
     install_requires=requirements,
     license="Apache Software License 2.0",
     long_description_content_type="text/x-rst",
