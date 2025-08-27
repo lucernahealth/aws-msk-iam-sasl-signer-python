@@ -8,7 +8,12 @@ from urllib.parse import parse_qs, urlparse
 
 import boto3
 import botocore.session
-import pkg_resources
+try:
+    # Python 3.8+
+    from importlib import metadata
+except ImportError:
+    # Python 3.7
+    import importlib_metadata as metadata
 from botocore.auth import SigV4QueryAuth
 from botocore.awsrequest import AWSRequest
 from botocore.config import Config
@@ -31,7 +36,7 @@ def __get_user_agent__():
     Returns:
         str: The user-agent identifying this signer library.
     """
-    return f"{LIB_NAME}/{pkg_resources.get_distribution(LIB_NAME).version}"
+    return f"{LIB_NAME}/{metadata.version(LIB_NAME)}"
 
 
 def __load_default_credentials__():

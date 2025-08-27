@@ -17,7 +17,11 @@ with open("CHANGELOG.rst") as changelog_file:
 
 # Do not touch without good reason! These versions are pinned to be
 # compatible with Glue 3.0
-requirements = ["boto3==1.18.65", "botocore==1.21.65"]
+requirements = [
+    "boto3==1.18.65", 
+    "botocore==1.21.65",
+    "importlib_metadata; python_version<'3.8'"
+]
 
 test_requirements = [
     "pytest==7.3.1",
